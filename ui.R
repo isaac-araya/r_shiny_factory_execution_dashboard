@@ -1,5 +1,5 @@
 library(shiny)
-library(shinydashboard)r
+library(shinydashboard)
 
 
 # - Shiny simple but powerful navigation page. 
@@ -17,6 +17,14 @@ ui <- navbarPage(title = "",
                               )
                             )
                           )
+                 )
+                 ,tabPanel("tab_02", 
+                           ui <- fluidPage(
+                             fluidRow(
+                               column(12, offset = 0
+                               )
+                             )
+                           )
                  )
 )
 
