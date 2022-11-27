@@ -22,9 +22,12 @@ server <- function(input, output, session) {
   # Tab 02 Reactable
   output$table_tab_02 <- renderReactable({
     reactable(
-      iris[1:5, ],
+      iris[ , ],
+      showPageSizeOptions = TRUE,
+      pageSizeOptions = c(4, 8, 12),
+      defaultPageSize = 4,
       showSortIcon = TRUE,
-      filterable = TRUE, minRows = 10,
+      filterable = TRUE, minRows = 5, searchable = TRUE,
       defaultColDef = colDef(
         header = function(value) gsub(".", " ", value, fixed = TRUE),
         cell = function(value) format(value, nsmall = 1),
