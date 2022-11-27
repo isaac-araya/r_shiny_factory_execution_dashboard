@@ -1,6 +1,7 @@
 library(shiny)
 library(shinydashboard) #replace with library(semantic.dashboard) for darck theme
 library(DT)
+library(reactable)
 
 
 server <- function(input, output, session) {
@@ -18,6 +19,25 @@ server <- function(input, output, session) {
   output$table <- renderTable({
     dataset()
   })
+  # Tab 02 Reactable
+  output$table_tab_02 <- renderReactable({
+    reactable(
+      iris[1:5, ],
+      defaultColDef = colDef(
+        header = function(value) gsub(".", " ", value, fixed = TRUE),
+        cell = function(value) format(value, nsmall = 1),
+        align = "center",
+        minWidth = 70,
+        headerStyle = list(background = "#f7f7f8")
+      ),
+      columns = list(
+        Species = colDef(minWidth = 140)  # overrides the default
+      ),
+      bordered = TRUE,
+      highlight = TRUE
+    )
+  })
+  
   # Tab Book Mastering Shiny
   output$frame_bookdown_Rshiny <- renderUI({
     tags$iframe(src=paste(hyperlink_bookdown_r), style="height:1200px;width:100%;", frameborder = "no")

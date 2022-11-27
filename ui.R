@@ -21,14 +21,27 @@ ui <- navbarPage(title="",
                 )
               )
      )
+     #-|--------------- UI: Tab 02 Basic reactable output ---------------     
      ,tabPanel("tab_02", 
                ui <- fluidPage(
                  fluidRow(
-                   column(12, offset = 0
+                   column(12, offset = 0,
+                          reactableOutput("table_tab_02")
                    )
                  )
                )
-     ),tabPanel("Book Mastering Shiny", 
+     )
+     #-|--------------- UI: Tab 03 Next Level Reactable Output ---------------     
+    ,tabPanel("tab_03", 
+              ui <- fluidPage(
+                fluidRow(
+                  column(12, offset = 0,
+                         reactableOutput("table_tab_03")
+                  )
+                )
+              )
+    )
+     ,tabPanel("Book Mastering Shiny", 
                 ui <- fluidPage(
                   fluidRow(
                     htmlOutput("frame_bookdown_Rshiny")
