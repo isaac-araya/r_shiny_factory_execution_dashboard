@@ -28,6 +28,35 @@ ui <- navbarPage(title="",
                    )
                  )
                )
-     )                 
+     ),tabPanel("Book Mastering Shiny", 
+                ui <- fluidPage(
+                  fluidRow(
+                    htmlOutput("frame_bookdown_Rshiny")
+                  )
+                )
+     )
+     ,tabPanel("All ASPIRE APO's", 
+               ui <- fluidPage(
+                 fluidRow(
+                   p("Data in this report is refreshed every 30 min by SQLPF. It may contain additional data latency from MARS interface."),
+                   br(),
+                   uiOutput("aspire_apos_dof_ui"),
+                   DTOutput("apo_status"),
+                   p(tags$code(paste("Source:",file_apo_wip_status)))    
+                 )
+               )
+     )
+     #-|---------------- UI: MES Lot report  ---------------
+     ,tabPanel("ALL MES WIP", 
+               ui <- fluidPage(
+                 fluidRow(
+                   p("Data in this report is refreshed every 30 min by SQLPF. It may contain additional data latency from XEUS interface."),
+                   br(),
+                   uiOutput("wip_lot_status_and_platform_MES_dof_ui"),
+                   DTOutput("wip_lot_status_and_platform_MES"),
+                   p(tags$code(paste("Source:",file_apo_wip_status_and_platform_MES)))    
+                 )
+               )
+     )
 )
 #tableOutput("table")
