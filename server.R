@@ -28,6 +28,7 @@ server <- function(input, output, session) {
       pageSizeOptions = c(4, 8, 12),
       defaultPageSize = 4,
       showSortIcon = TRUE,
+      
       filterable = TRUE, minRows = 5, searchable = TRUE,
       defaultColDef = colDef(
         header = function(value) gsub(".", " ", value, fixed = TRUE),
@@ -51,7 +52,9 @@ server <- function(input, output, session) {
   # Create a table using reactable package
   #load_tab_03            <- read_delim(file_apo_wip_status,"\t", escape_double = FALSE, trim_ws = TRUE)  
   output$table_tab_03 <- renderReactable({
-    reactable(apo_wip_status[1:5, ], columns = list(
+    reactable(apo_wip_status[1:5, ], 
+    compact = TRUE,
+    columns = list(
       state = colDef(
         style = function(value) {
           if (value == 'I') {
