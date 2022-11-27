@@ -35,7 +35,8 @@ server <- function(input, output, session) {
         defaultSortOrder = "asc"
       ),
       columns = list(
-        Species = colDef(minWidth = 140)  # overrides the default
+        Species = colDef(minWidth = 140, filterable = FALSE)  # overrides the default
+        # Make specific column not filterable
       ),
       defaultSorted = c("Species", "Petal.Length"),
       bordered = TRUE,
