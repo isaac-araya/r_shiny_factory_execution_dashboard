@@ -2,6 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(DT)
 library(readr)
+library(reactable)
 
 execution_dashboard = "C:/R/execution_dashboard/" #location where the app is saved (development folder)
 

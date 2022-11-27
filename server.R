@@ -1,6 +1,7 @@
 library(shiny)
 library(shinydashboard) #replace with library(semantic.dashboard) for darck theme
 library(DT)
+library(readr)
 library(reactable)
 
 
@@ -46,15 +47,42 @@ server <- function(input, output, session) {
       highlight = TRUE
     )
   })
-  
+  #Tab_03 
+  # Create a table using reactable package
+  #load_tab_03            <- read_delim(file_apo_wip_status,"\t", escape_double = FALSE, trim_ws = TRUE)  
+  output$table_tab_03 <- renderReactable({
+    reactable(apo_wip_status[1:5, ], columns = list(
+      state = colDef(
+        style = function(value) {
+          if (value == 'I') {
+            color <- "#008000"
+          } else if (value == 'D') {
+            color <- "#e00000"
+          } else {
+            color <- "#777"
+          }
+          list(color = color, fontWeight = "bold")
+        }
+      ),
+      bqty = colDef(
+        style = function(value) {
+          if (value > 31) {
+            color <- "#008000"
+          } else if (value < 30) {
+            color <- "#e00000"
+          } else {
+            color <- "#777"
+          }
+          list(color = color, fontWeight = "bold")
+        }
+      )
+      
+    ))
+  })
   # Tab Book Mastering Shiny
   output$frame_bookdown_Rshiny <- renderUI({
     tags$iframe(src=paste(hyperlink_bookdown_r), style="height:1200px;width:100%;", frameborder = "no")
   })
-  #Tab_03 
-  # Create a table using reactable package
-  
-  
   
   # Tab All ASPIRE APO's
   #ASPIRE Report Tables
