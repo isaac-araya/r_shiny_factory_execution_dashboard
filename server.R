@@ -23,16 +23,21 @@ server <- function(input, output, session) {
   output$table_tab_02 <- renderReactable({
     reactable(
       iris[1:5, ],
+      showSortIcon = TRUE,
+      filterable = TRUE, minRows = 10,
       defaultColDef = colDef(
         header = function(value) gsub(".", " ", value, fixed = TRUE),
         cell = function(value) format(value, nsmall = 1),
         align = "center",
         minWidth = 70,
-        headerStyle = list(background = "#f7f7f8")
+        headerStyle = list(background = "#f7f7f8"),
+        sortNALast = TRUE,
+        defaultSortOrder = "asc"
       ),
       columns = list(
         Species = colDef(minWidth = 140)  # overrides the default
       ),
+      defaultSorted = c("Species", "Petal.Length"),
       bordered = TRUE,
       highlight = TRUE
     )

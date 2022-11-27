@@ -21,12 +21,14 @@ ui <- navbarPage(title="",
                 )
               )
      )
-     #-|--------------- UI: Tab 02 Basic reactable output ---------------     
+     #-|--------------- UI: Tab 02 Basic reactable output ---------------  
+     #https://glin.github.io/reactable/articles/examples.html#basic-usage
      ,tabPanel("tab_02", 
                ui <- fluidPage(
                  fluidRow(
                    column(12, offset = 0,
-                          reactableOutput("table_tab_02")
+                    p("Tables are sortable by default. You can sort a column by clicking on its header, or sort multiple columns by holding the shift key while sorting"),
+                    reactableOutput("table_tab_02")
                    )
                  )
                )
@@ -36,7 +38,8 @@ ui <- navbarPage(title="",
               ui <- fluidPage(
                 fluidRow(
                   column(12, offset = 0,
-                         reactableOutput("table_tab_03")
+                    p("Tables are sortable by default. You can sort a column by clicking on its header, or sort multiple columns by holding the shift key while sorting"),
+                    reactableOutput("table_tab_03")
                   )
                 )
               )
