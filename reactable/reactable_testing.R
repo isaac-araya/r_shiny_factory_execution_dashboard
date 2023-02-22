@@ -1,4 +1,5 @@
 library(reactable)
+library(readr)
 
 #reactable(iris)
 

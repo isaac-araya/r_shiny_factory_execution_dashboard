@@ -1,3 +1,4 @@
+#Execution Dashboard Open Source Version
 library(shiny)
 library(shinydashboard) #replace with library(semantic.dashboard) for darck theme
 #library(semantic.dashboard)
@@ -43,7 +44,7 @@ ui <- navbarPage(title="",
                   )
                 )
               )
-    )
+     )
      ,tabPanel("Book Mastering Shiny", 
                 ui <- fluidPage(
                   fluidRow(
